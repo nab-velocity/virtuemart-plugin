@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="2.5" type="plugin" group="vmpayment">
+    <name>Velocity</name>
+    <creationDate>September 30 2015</creationDate>
+    <author>velocity</author>
+    <authorUrl></authorUrl>
+    <copyright>Copyright (C) 2015 Velocity Team. All rights reserved.</copyright>
+    <license></license>
+    <version>1.0.0</version>
+    <description>Velocity Credit Card</description>
+    <files>
+        <filename plugin="velocity">velocity.php</filename>
+		<filename plugin="velocity">velocityRefund.php</filename>
+		<folder>velocity</folder>
+		<folder>sdk</folder>
+        <folder>language</folder>
+    </files>
+
+
+    <vmconfig>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/plugins/vmpayment/velocity/velocity/fields">
+                <field type="spacer" default="VMPAYMENT_VELOCITY_AIM" level="level1"/>
+                <field type="spacer" default="VMPAYMENT_VELOCITY_MUST_SSL" level="level1"/>
+                <field type="vmtitle" default="VMPAYMENT_VELOCITY_LIVE_PARAMS" level="level1"/>
+                <field name="identitytoken" type="textarea" default="" rows="10" cols="5"
+                       label="VMPAYMENT_VELOCITY_IDENTITYTOKEN" description="VMPAYMENT_VELOCITY_IDENTITYTOKEN_DESC"/>
+                <field name="workflowid" type="text" size="50" default="" label="VMPAYMENT_VELOCITY_WORKFLOWID"
+                       description="VMPAYMENT_VELOCITY_WORKFLOWID_DESC"/>
+                <field name="applicationprofileid" type="text" size="50" default=""
+                       label="VMPAYMENT_VELOCITY_APPLICATIONPROFILEID"
+                       description="VMPAYMENT_VELOCITY_APPLICATIONPROFILEID_DESC"/>
+                <field name="merchantprofileid" type="text" size="50" default=""
+                       label="VMPAYMENT_VELOCITY_MERCHANTPROFILEID"
+                       description="VMPAYMENT_VELOCITY_MERCHANTPROFILEID_DESC"/>
+                <field name="payment_mode" type="radio" default="0" label="VMPAYMENT_VELOCITY_PAYMENT_MODE"
+                       description="VMPAYMENT_VELOCITY_PAYMENT_MODE_DESC">
+                    <option value="0">VMPAYMENT_VELOCITY_PRODUCTION</option>
+                    <option value="1">VMPAYMENT_VELOCITY_SANDBOX</option>
+                </field>
+            </fieldset>
+        </fields>
+    </vmconfig>
+
+</extension>
