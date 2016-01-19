@@ -13,9 +13,7 @@
  * http://nabvelocity.com
  */
 defined('_JEXEC') or die();
-//if ($viewData['include_amazon_css']) {
-//	$doc = JFactory::getDocument()->addStyleSheet(JURI::root(true) . '/plugins/vmpayment/amazon/assets/css/amazon.css');
-//}
+
 $failure = $viewData["failure"];
 
 if($failure) {

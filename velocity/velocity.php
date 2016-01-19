@@ -587,19 +587,6 @@ class plgVmpaymentVelocity extends vmPSPlugin {
                 'EmployeeId'   => '11'
             ));
 
-            $xml = VelocityXmlCreator::authorizeandcaptureXML(array(  
-                'amount'       => $totalInPaymentCurrency['value'],
-                'avsdata'      => $avsData, 
-                'carddata'     => $cardData,
-                'entry_mode'   => 'Keyed',
-                'IndustryType' => 'Ecommerce',
-                'Reference'    => 'xyz',
-                'EmployeeId'   => '11'
-            ));  // got authorizeandcapture xml object. 
-
-            $req = $xml->saveXML();
-            $obj_req = serialize($req);
-
         } catch (Exception $e) {
             $this->error = TRUE;
             $errMsg .= '<br>' . vmText::_($e->getMessage());
@@ -609,6 +596,21 @@ class plgVmpaymentVelocity extends vmPSPlugin {
 
             /* Request for the authrizeandcapture transaction */
             try {
+                
+                $xml = VelocityXmlCreator::authorizeandcaptureXML(array(  
+                    'amount'       => $totalInPaymentCurrency['value'],
+                    'avsdata'      => $avsData, 
+                    'token'        => $response['PaymentAccountDataToken'], 
+                    'order_id'     => $order['details']['BT']->order_number,
+                    'entry_mode'   => 'Keyed',
+                    'IndustryType' => 'Ecommerce',
+                    'Reference'    => 'xyz',
+                    'EmployeeId'   => '11'
+                ));  // got authorizeandcapture xml object. 
+
+                $req = $xml->saveXML();
+                $obj_req = serialize($req);
+            
                 $cap_response = $velocityProcessor->authorizeAndCapture( array(
                     'amount'       => $totalInPaymentCurrency['value'], 
                     'avsdata'      => $avsData,
